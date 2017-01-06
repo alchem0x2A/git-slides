@@ -157,9 +157,11 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 #+end_example
 
+
 ** =.gitignore= (II)
+
 #+LaTeX: \footnotesize
-#+BEGIN_SRC shell :exports both :results replace output 
+#+BEGIN_SRC shell :exports both :results replace output :noeval
   # Use .gitignore rules
   cat .gitignore
   echo ""
@@ -167,7 +169,9 @@ nothing added to commit but untracked files present (use "git add" to track)
   git status 
 #+END_SRC
 
-#+LaTeX: tiny
+*Results*
+
+#+LaTeX: \tiny
 #+RESULTS:
 #+begin_example
 *#*
@@ -191,6 +195,84 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 #+end_example
+
+
+** Stage the untracked files:
+#+LaTeX: \footnotesize
+#+BEGIN_SRC shell :exports both :results replace output :noeval
+  # Add some file to the staged area
+  # But we leave out some
+  git add Tian-* .gitignore
+  git status
+#+END_SRC
+
+*Results*
+
+#+LaTeX: \tiny
+#+RESULTS:
+#+begin_example
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+    new file:   .gitignore
+    new file:   Tian-git.org
+    new file:   Tian-git.pdf
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    .DS_Store
+
+#+end_example
+
+
+** Finally the commit
+#+LaTeX: \footnotesize
+#+NAME: git-commit
+#+BEGIN_SRC shell :exports both  :results replace output 
+  # Commit the stated files
+  git commit -m "Commit. Presentation to the commit"
+  git status
+#+END_SRC
+
+#+LaTeX: \tiny
+#+RESULTS: git-commit
+#+begin_example
+[master (root-commit) 45f73d7] Commit. Presentation to the commit
+ 3 files changed, 203 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 Tian-git.org
+ create mode 100644 Tian-git.pdf
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   Tian-git.org
+    modified:   Tian-git.pdf
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    .DS_Store
+
+no changes added to commit (use "git add" and/or "git commit -a")
+#+end_example
+
+** Now use a remote for pushing
+#+LaTeX: \footnotesize
+#+NAME: git-push
+#+BEGIN_SRC shell :exports both :results replace output 
+  # Must add a remote for pushing!
+  # origin is the default branch
+  git remote add origin https://github.com/lovaulonze/git-slides.git
+  # Push the changes to the master
+  git push -u origin master
+#+END_SRC
 
 * Some Tricks
 
