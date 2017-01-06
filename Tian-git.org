@@ -360,25 +360,34 @@ git commit --amend
 
 
 ** What if you don't like your current changes?
+#+LaTeX: \footnotesize
 - =checkout= on file
   #+BEGIN_SRC shell
     # The checkout will revert the changes
     # in this file to the last commit
     git checkout -- $FILE
   #+END_SRC
-
   - *But* the change is never saved!
-  - Recommend to use branching frequently whenever you are not sure if
-    you will preserve your changes.
 - =checkout= on version
   #+BEGIN_SRC shell
     # The checkout with a hash will
     # checkout on the specific version
     git checkout 45f73d7
   #+END_SRC
+- If local changes have been made after checkout to another version and you don't want to commit them: =stash=
+  #+BEGIN_SRC shell
+  # Stash local changes if you encounter
+  # errors checking out to another version
+  git stash save
+  # Or just ignore the changes
+  git stash drop
+#+END_SRC
 
-    #+RESULTS:
 
+** TAG: easier way to work with versions
+#+BEGIN_SRC shell
+
+#+End_SRC
 
 ** 
 
