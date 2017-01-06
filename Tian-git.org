@@ -405,10 +405,8 @@ When is a branching needed?
 
 #+LaTeX: \footnotestyle
 #+BEGIN_SRC shell :exports both :results silent
-  # Create a branch
-  git branch alter-ego
-  # And checkout
-  git checkout alter-ego
+  # We are on the alter-ego branch!
+  git checkout master
 #+END_SRC
 
 
