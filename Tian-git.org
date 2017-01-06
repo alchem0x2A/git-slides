@@ -410,6 +410,16 @@ When is a branching needed?
 #+END_SRC
 
 
+** TODO Merge: =master= --> =alter-ego=
+
+#+BEGIN_SRC shell 
+  # From the alter-ego branch, checkout master
+  git checkout alter-ego
+  # From the branch, merge with master
+  git merge master
+#+END_SRC
+
+
 * Some Tricks
 
 * Useful Resources
