@@ -239,6 +239,8 @@ Untracked files:
   git status
 #+END_SRC
 
+*Results*
+
 #+LaTeX: \tiny
 #+RESULTS: git-commit
 #+begin_example
@@ -248,12 +250,6 @@ Untracked files:
  create mode 100644 Tian-git.org
  create mode 100644 Tian-git.pdf
 On branch master
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-    modified:   Tian-git.org
-    modified:   Tian-git.pdf
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -263,16 +259,64 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 #+end_example
 
+
 ** Now use a remote for pushing
 #+LaTeX: \footnotesize
 #+NAME: git-push
-#+BEGIN_SRC shell :exports both :results replace output 
+#+BEGIN_SRC shell :exports both :results replace output :noeval
   # Must add a remote for pushing!
   # origin is the default branch
   git remote add origin https://github.com/lovaulonze/git-slides.git
-  # Push the changes to the master
+  # Push the changes to the master upstream
   git push -u origin master
+  git status
 #+END_SRC
+
+*Results*
+
+#+LaTeX: \tiny
+#+RESULTS: git-push
+#+begin_example
+Branch master set up to track remote branch master from origin.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+    .DS_Store
+
+no changes added to commit (use "git add" and/or "git commit -a")
+#+end_example
+
+
+** The difference between the remote and local
+
+#+LaTeX: \footnotesize
+#+NAME: remote-local
+#+BEGIN_SRC shell :exports both :results replace output 
+  # Now lets do some commit locally
+  git add Tian-git.org Tian-git.pdf
+  git commit -m "Now proceed to the remote part"
+  git status
+#+END_SRC
+
+#+LaTeX: \tiny
+#+RESULTS: remote-local
+#+begin_example
+[master 0bc7411] Now proceed to the remote part
+ 2 files changed, 84 insertions(+), 2 deletions(-)
+ rewrite Tian-git.pdf (67%)
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.DS_Store
+
+nothing added to commit but untracked files present (use "git add" to track)
+#+end_example
 
 * Some Tricks
 
