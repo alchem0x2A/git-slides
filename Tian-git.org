@@ -233,7 +233,7 @@ Untracked files:
 ** Finally the commit
 #+LaTeX: \footnotesize
 #+NAME: git-commit
-#+BEGIN_SRC shell :exports both  :results replace output 
+#+BEGIN_SRC shell :exports both  :results replace output :noeval
   # Commit the stated files
   git commit -m "Commit. Presentation to the commit"
   git status
@@ -294,21 +294,94 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 #+LaTeX: \footnotesize
 #+NAME: remote-local
-#+BEGIN_SRC shell :exports both :results replace output 
+#+BEGIN_SRC shell :exports both :results replace output :noeval
   # Now lets do some commit locally
   git add Tian-git.org Tian-git.pdf
   git commit -m "Now proceed to the remote part"
   git status
 #+END_SRC
 
-#+LaTeX: \tiny
+*Results*
+
 #+RESULTS: remote-local
+: [master 262e532] Now proceed to the remote part
+:  1 file changed, 6 insertions(+), 14 deletions(-)
 : On branch master
-: Your branch is up-to-date with 'origin/master'.
+: Your branch is ahead of 'origin/master' by 1 commit.
+:   (use "git push" to publish your local commits)
 : nothing to commit, working tree clean
-: On branch master
-: Your branch is up-to-date with 'origin/master'.
-: nothing to commit, working tree clean
+
+
+
+** Check the log of the git
+#+LaTeX: \footnotesize
+#+NAME: git-log
+#+BEGIN_SRC shell :exports both :results replace output :noeval 
+  # Some formatting using git log
+  # But I prefer to use a GUI or editor plugin
+  git log --pretty=format:"%h %ad | %s%d [%an]" --date=short
+#+END_SRC
+
+#+LaTeX: \tiny
+#+RESULTS: git-log
+: 262e532 2017-01-06 | Now proceed to the remote part (HEAD -> master) [Tian Tian]
+: af9e6be 2017-01-06 | Add .DS_Store to ignore (origin/master) [Tian Tian]
+: 0bc7411 2017-01-06 | Now proceed to the remote part [Tian Tian]
+: 45f73d7 2017-01-06 | Commit. Presentation to the commit [Tian Tian]
+
+
+** Undoing
+
+*** =--amend= option: add/something immediately after committing.
+#+LaTeX: \footnotesize
+  #+BEGIN_SRC shell :noeval
+git commit --amend
+#+END_SRC
+
+*** Unstaging
+#+LaTeX: \footnotesize
+  #+BEGIN_SRC shell :exports both :results replace output :noeval
+  #Add files to stage
+  git add Tian-*
+  git status -s
+  #I wanna remove the pdf from staging
+  git reset HEAD Tian-git.pdf
+  git status -s
+  #+END_SRC
+
+  #+LaTeX: \tiny
+  #+RESULTS:
+  : M  Tian-git.org
+  : M  Tian-git.pdf
+  : Unstaged changes after reset:
+  : M    Tian-git.pdf
+  : M  Tian-git.org
+  :  M Tian-git.pdf
+
+
+** What if you don't like your current changes?
+- =checkout= on file
+  #+BEGIN_SRC shell
+    # The checkout will revert the changes
+    # in this file to the last commit
+    git checkout -- $FILE
+  #+END_SRC
+
+  - *But* the change is never saved!
+  - Recommend to use branching frequently whenever you are not sure if
+    you will preserve your changes.
+- =checkout= on version
+  #+BEGIN_SRC shell
+    # The checkout with a hash will
+    # checkout on the specific version
+    git checkout 45f73d7
+  #+END_SRC
+
+    #+RESULTS:
+
+
+** 
+
 
 * Some Tricks
 
