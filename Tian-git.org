@@ -419,6 +419,12 @@ When is a branching needed?
   git merge alter-ego
 #+END_SRC
 
+- *CAUTION* editing the same region in both branches will cause unsuccessful merge!
+- =git reset --merge= if you find the merge not necessary
+- Manually reset the conflicts!
+- Binary files cannot be merged.
+
+
 
 * Some Tricks
 
