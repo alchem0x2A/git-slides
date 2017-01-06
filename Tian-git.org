@@ -405,18 +405,18 @@ When is a branching needed?
 
 #+LaTeX: \footnotestyle
 #+BEGIN_SRC shell :exports both :results silent
-  # We are on the alter-ego branch!
-  git checkout master
+  # We are on the master branch!
+  git checkout alter-ego
 #+END_SRC
 
 
-** TODO Merge: =master= --> =alter-ego=
+** TODO Merge: =alter-ego= --> =master=
 
 #+BEGIN_SRC shell 
   # From the alter-ego branch, checkout master
-  git checkout alter-ego
+  git checkout master
   # From the branch, merge with master
-  git merge master
+  git merge alter-ego
 #+END_SRC
 
 
