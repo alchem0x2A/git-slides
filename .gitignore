@@ -1,0 +1,6 @@
+*#*
+*~
+*.tex
+_minted*
+some/
+*.dvi
