@@ -385,11 +385,31 @@ git commit --amend
 
 
 ** TAG: easier way to work with versions
+#+LaTeX: \footnotesize
 #+BEGIN_SRC shell
-
+  # Add a tag to the HEAD commit
+  git tag 0.1.0
+  # You can use relative versions to checkout
+  # ^ is the parent commit
+  git checkout 0.1.0^
+  # ~[num] is the version offset
+  git checkout 0.1.0~2
 #+End_SRC
 
-** 
+
+** Branching
+When is a branching needed?
+- Adding experimental features
+- Restructuring code
+- Your boss changes your \LaTeX files
+
+#+LaTeX: \footnotestyle
+#+BEGIN_SRC shell :exports both :results silent
+  # Create a branch
+  git branch alter-ego
+  # And checkout
+  git checkout alter-ego
+#+END_SRC
 
 
 * Some Tricks
