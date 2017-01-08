@@ -410,7 +410,7 @@ When is a branching needed?
 #+END_SRC
 
 
-** TODO Merge: =alter-ego= --> =master=
+** Merge: =alter-ego= --> =master=
 
 #+BEGIN_SRC shell 
   # From the alter-ego branch, checkout master
@@ -426,6 +426,42 @@ When is a branching needed?
 
 
 
-* Some Tricks
+** Pull commits from the remote
 
-* Useful Resources
+#+BEGIN_SRC shell :noeval
+  # Pull from a remote upstream, if already set
+  git pull $remote $branch
+#+END_SRC
+
+Some advice on a save push/pull strategy with online repository:
+
+- Be patient when conflicts happen
+- Be cooperative with others to avoid conflict
+- If necessary use additional branch only for pull
+
+
+
+
+** Some other techniques of git
+
+- Remote collaboration
+- Distributed / multiple remote repos
+- Privilege management
+- ...
+ 
+
+
+** Some Tricks
+- Make commits to solve a problem / add a function
+- Avoid commit on multiple problems
+- Use branch and merge to test experimental functions
+- Be patient and brave: you won't lose anything!
+
+
+** Useful Resources
+
+- [[https://git-scm.com/doc]]
+- [[https://gitlab.ethz.ch]]
+- [[https://github.com]]
+
+
